@@ -19,6 +19,7 @@ final class WebpEncoderTest extends ImagickTestCase
         $image = $this->createTestImage(3, 2);
         $encoder = new WebpEncoder(75);
         $result = $encoder->encode($image);
-        $this->assertMediaType('image/webp', (string) $result);
+        $this->assertMediaType('image/webp', $result);
+        $this->assertEquals('image/webp', $result->mimetype());
     }
 }

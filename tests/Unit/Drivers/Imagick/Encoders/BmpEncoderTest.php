@@ -19,6 +19,7 @@ final class BmpEncoderTest extends ImagickTestCase
         $image = $this->createTestImage(3, 2);
         $encoder = new BmpEncoder();
         $result = $encoder->encode($image);
-        $this->assertMediaType(['image/bmp', 'image/x-ms-bmp'], (string) $result);
+        $this->assertMediaType(['image/bmp', 'image/x-ms-bmp'], $result);
+        $this->assertEquals('image/bmp', $result->mimetype());
     }
 }

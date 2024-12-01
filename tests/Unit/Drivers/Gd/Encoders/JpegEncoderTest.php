@@ -22,7 +22,8 @@ final class JpegEncoderTest extends GdTestCase
         $image = $this->createTestImage(3, 2);
         $encoder = new JpegEncoder(75);
         $result = $encoder->encode($image);
-        $this->assertMediaType('image/jpeg', (string) $result);
+        $this->assertMediaType('image/jpeg', $result);
+        $this->assertEquals('image/jpeg', $result->mimetype());
     }
 
     public function testEncodeProgressive(): void
@@ -30,7 +31,8 @@ final class JpegEncoderTest extends GdTestCase
         $image = $this->createTestImage(3, 2);
         $encoder = new JpegEncoder(progressive: true);
         $result = $encoder->encode($image);
-        $this->assertMediaType('image/jpeg', (string) $result);
-        $this->assertTrue($this->isProgressiveJpeg((string) $result));
+        $this->assertMediaType('image/jpeg', $result);
+        $this->assertEquals('image/jpeg', $result->mimetype());
+        $this->assertTrue($this->isProgressiveJpeg($result));
     }
 }

@@ -19,6 +19,7 @@ final class AvifEncoderTest extends GdTestCase
         $image = $this->createTestImage(3, 2);
         $encoder = new AvifEncoder(10);
         $result = $encoder->encode($image);
-        $this->assertMediaType('image/avif', (string) $result);
+        $this->assertMediaType('image/avif', $result);
+        $this->assertEquals('image/avif', $result->mimetype());
     }
 }
